@@ -12,11 +12,30 @@ class CoursesScreen extends StatelessWidget {
         padding: const EdgeInsets.only(top: 50.0),
         child: Column(
           children: [
-            ListTile(
-              leading: CircleAvatar(
-                child: Image.asset('images/user.png'),
-              ),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Icon(Icons.menu),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    alignment: Alignment.center,
+                      child: Text(
+                    'Courses',
+                    style: TextStyle(fontSize: 20.0),
+                  )),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                ),
+              ],
             ),
+            Divider(),
           ],
         ),
       ),
