@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import '../utils/size_config.dart';
 
 class UserHeader extends StatelessWidget {
+
+  final String title;
+
   const UserHeader({
-    super.key,
+    super.key, required this.title,
   });
 
   @override
@@ -16,7 +19,7 @@ class UserHeader extends StatelessWidget {
               bottom: SizeConfig.blockSizeVertical * 1.0),
           child: Row(
             children: [
-              Expanded(
+              const Expanded(
                 flex: 1,
                 child: Icon(Icons.menu),
               ),
@@ -25,11 +28,11 @@ class UserHeader extends StatelessWidget {
                 child: Container(
                     alignment: Alignment.center,
                     child: Text(
-                      'Courses',
-                      style: TextStyle(fontSize: 20.0),
+                      title,
+                      style: const TextStyle(fontSize: 20.0),
                     )),
               ),
-              Expanded(
+              const Expanded(
                 flex: 1,
                 child: CircleAvatar(
                   child: Icon(Icons.person),
@@ -38,7 +41,7 @@ class UserHeader extends StatelessWidget {
             ],
           ),
         ),
-        Divider(),
+        const Divider(),
       ],
     );
   }

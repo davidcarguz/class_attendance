@@ -2,7 +2,7 @@ import 'package:class_attendance/screens/courses_screen.dart';
 import 'package:class_attendance/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
-import '../components/mainButton.dart';
+import '../widgets/mainButton.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
                     children: [
                       RichText(
                         text: const TextSpan(
-                            text: 'Welcome to ',
+                            text: 'Bienvenido a ',
                             style: headerTitleStyle,
                             children: [
                               TextSpan(
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
                             ]),
                       ),
                       const Text(
-                        'Taking assistance has neven been easier',
+                        'Tomar asistencia nunca ha sido tan facil',
                         style: subtitleTextStyle,
                       ),
                     ],
@@ -57,13 +57,13 @@ class LoginPage extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(left: 10.0, bottom: 5.0),
                         child: Text(
-                          'Login',
+                          'Ingresar',
                           style: formHeaderTitleStyle,
                         ),
                       ),
                       const TextField(
                         decoration: InputDecoration(
-                          labelText: 'Email',
+                          labelText: 'Correo',
                           enabledBorder: inputFieldLoginStyle,
                           border: inputFieldFocusLoginStyle,
                           filled: true,
@@ -75,7 +75,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       const TextField(
                         decoration: InputDecoration(
-                          labelText: 'Password',
+                          labelText: 'Contraseña',
                           enabledBorder: inputFieldLoginStyle,
                           border: inputFieldFocusLoginStyle,
                           filled: true,
@@ -89,11 +89,11 @@ class LoginPage extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: GestureDetector(
-                              onTap: () {}, child: const Text('Forgot Password')),
+                              onTap: () {}, child: const Text('Olvido su Contraseña')),
                         ),
                       ),
                       MainButton(
-                          label: 'SUBMIT',
+                          label: 'Ingresar',
                           onPressed: () {
                             Navigator.pushNamed(context, CoursesScreen.route);
                           }),
@@ -107,7 +107,7 @@ class LoginPage extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {},
                       child: const Text(
-                        'Don\'t have an account? Sign up here.',
+                        'No tiene cuenta? Registrese aqui.',
                         style: footerTextStyle,
                       ),
                     ),
