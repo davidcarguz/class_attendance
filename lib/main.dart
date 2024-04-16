@@ -1,5 +1,6 @@
-import 'package:class_attendance/screens/courses_screen.dart';
-import 'package:class_attendance/screens/login_screen.dart';
+import 'screens/courses_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/course_assistance_screen.dart';
 import 'package:flutter/material.dart';
 import 'utils/constants.dart';
 
@@ -19,9 +20,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(),
-      routes:{
-        CoursesScreen.route : (context) => const CoursesScreen(),
-       },
+      routes: {
+        CoursesScreen.route: (context) => const CoursesScreen(),
+        CourseAssistanceScreen.route: (context) =>
+            const CourseAssistanceScreen(),
+      },
     );
   }
 }
@@ -34,12 +37,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-
     return const Scaffold(
-      body: SafeArea(child: LoginPage()),
+      body: LoginPage(),
     );
   }
 }
