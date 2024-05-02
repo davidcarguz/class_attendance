@@ -22,8 +22,6 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
       routes: {
         CoursesScreen.route: (context) => const CoursesScreen(),
-        CourseAssistanceScreen.route: (context) =>
-            const CourseAssistanceScreen(),
       },
     );
   }
