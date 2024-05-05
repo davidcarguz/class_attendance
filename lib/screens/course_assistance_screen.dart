@@ -1,3 +1,4 @@
+import 'package:class_attendance/models/teacher_courses.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -5,23 +6,22 @@ import 'package:whiteboard/whiteboard.dart';
 import '../widgets/user_header.dart';
 import '../widgets/basic_information.dart';
 import '../widgets/mainButton.dart';
-import '../models/course_students.dart';
 import '../widgets/student_item.dart';
 import '../utils/size_config.dart';
 import '../utils/constants.dart';
 
 class CourseAssistanceScreen extends StatelessWidget {
-  static const route = 'assistance';
+  final int courseIndex;
 
-  const CourseAssistanceScreen({super.key});
+  const CourseAssistanceScreen({super.key, required this.courseIndex});
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     var formatter = DateFormat('dd/MM/yyyy');
     var formattedDate = formatter.format(DateTime.now());
-    return ChangeNotifierProvider<CourseStudents>(
-      create: (BuildContext context) => CourseStudents(),
+    return ChangeNotifierProvider<TeacherCourses>(
+      create: (BuildContext context) => TeacherCourses(),
       child: Scaffold(
         body: SafeArea(
           child: Column(
@@ -48,20 +48,21 @@ class CourseAssistanceScreen extends StatelessWidget {
               ),
               Expanded(
                 flex: 5,
-                child: Consumer<CourseStudents>(
-                  builder: (BuildContext context, courseStudents,
-                      Widget? child) {
+                child: Consumer<TeacherCourses>(
+                  builder:
+                      (BuildContext context, teacherCourses, Widget? child) {
+                    final courseStudents =
+                        teacherCourses.courses[courseIndex].students;
                     return ListView.builder(
                       itemBuilder: (BuildContext context, int index) {
-                        final student = courseStudents.students[index];
                         return StudentRecord(
-                          studentName: student.name,
-                          assistanceCheck: student.isPresent,
-                          changeAssistance: (status) =>
-                              courseStudents.setStudentAssistance(student)
+                          studentName: courseStudents[index].name,
+                          assistanceCheck: courseStudents[index].isPresent,
+                          changeAssistance: (status) => teacherCourses
+                              .setStudentAssistance(courseStudents[index]),
                         );
                       },
-                      itemCount: 3,
+                      itemCount: courseStudents.length,
                     );
                   },
                 ),
